@@ -1,0 +1,6 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50,20 Q60,30 50,60 Q40,30 50,20" fill="#3A5F0B"/> <!-- Stem -->
+  <ellipse cx="50" cy="65" rx="25" ry="30" fill="#E74C3C"/> <!-- Fruit -->
+  <path d="M50,35 Q55,45 50,55 Q45,45 50,35" fill="#27AE60" opacity="0.3"/> <!-- Highlight -->
+  <circle cx="40" cy="60" r="3" fill="#F1C40F" opacity="0.8"/> <!-- Blemish -->
+</svg>

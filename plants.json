@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Tomato",
+    "image": "assets/images/plants/tomato.png",
+    "type": "vegetable",
+    "sun": "Full sun",
+    "water": "Regular watering",
+    "spacing": "24-36 inches",
+    "description": "Tomatoes thrive in full sunlight.",
+    "companions": ["Basil"],
+    "season": ["summer"]
+  },
+  {
+    "id": 2,
+    "name": "Basil",
+    "image": "assets/images/plants/basil.png",
+    "type": "herb",
+    "sun": "Partial sun",
+    "water": "Moderate watering",
+    "spacing": "12-18 inches",
+    "description": "Basil pairs well with tomatoes.",
+    "companions": ["Tomato"],
+    "season": ["spring", "summer"]
+  }
+]

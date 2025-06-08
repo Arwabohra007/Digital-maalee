@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Gardening Guide | Garden Maalee</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .guide-section {
+            @apply py-12 border-b border-gray-200;
+        }
+        .feature-card {
+            @apply bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
+        }
+        .plant-badge {
+            @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
+        }
+        .badge-vegetable { @apply bg-green-100 text-green-800; }
+        .badge-fruit { @apply bg-yellow-100 text-yellow-800; }
+        .badge-herb { @apply bg-blue-100 text-blue-800; }
+        .badge-flower { @apply bg-purple-100 text-purple-800; }
+        .card-image-container {
+            @apply w-full h-48 overflow-hidden;
+        }
+        .card-image {
+            @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <h1 class="text-3xl font-bold text-green-700">
+                <i class="fas fa-leaf mr-2"></i> Garden Maalee Complete Guide
+            </h1>
+            <p class="text-gray-600">Everything you need to plan, grow, and maintain your perfect garden</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 1. Getting Started Section -->
+        <section class="guide-section">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold text-green-800 mb-2">
+                    <i class="fas fa-seedling mr-2"></i> Getting Started
+                </h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Learn the fundamentals of garden planning and plant care</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 - Garden Planning -->
+                <div class="feature-card">
+                    <div class="card-image-container">
+                        <img src="assets/images/guides/garden planning.jpg" alt="Garden planning" class="card-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">Garden Planning 101</h3>
+                        <p class="text-gray-600 mb-4">How to design your garden layout for maximum yield and beauty</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Optimal plant spacing</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Sunlight requirements</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Soil Preparation -->
+                <div class="feature-card">
+                    <div class="card-image-container">
+                        <img src="assets/images/guides/soil prep.jpg" alt="Soil preparation" class="card-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">Soil Preparation</h3>
+                        <p class="text-gray-600 mb-4">Building healthy soil for thriving plants</p>
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Pro Tip:</h4>
+                            <p>Mix 3 parts garden soil with 1 part compost for most vegetables</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Watering Guide -->
+                <div class="feature-card">
+                    <div class="card-image-container">
+                        <img src="assets/images/guides/watreingg.jpg" alt="Watering guide" class="card-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">Watering Guide</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold">Vegetables:</h4>
+                                <p>1-2 inches per week</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Herbs:</h4>
+                                <p>Let soil dry between watering</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Plant Encyclopedia Section -->
+        <section class="guide-section">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold text-green-800 mb-2">
+                    <i class="fas fa-book mr-2"></i> Plant Encyclopedia
+                </h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Detailed growing guides for all plants in your garden</p>
+            </div>
+
+            <div class="mb-8 flex flex-wrap gap-4 justify-center">
+                <button class="px-4 py-2 bg-green-600 text-white rounded-full">All Plants</button>
+                <button class="px-4 py-2 bg-green-100 text-green-800 rounded-full">Vegetables</button>
+                <button class="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full">Fruits</button>
+                <button class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full">Herbs</button>
+                <button class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full">Flowers</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Sample Plant Card 1 -->
+                <div class="feature-card">
+                    <div class="card-image-container">
+                        <img src="assets/images/plants/tomato download.jpg" alt="Tomato" class="card-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">Tomato</h3>
+                            <span class="plant-badge badge-vegetable">Vegetable</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span><i class="fas fa-sun mr-1"></i> Full sun</span>
+                            <span><i class="fas fa-tint mr-1"></i> Regular</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Juicy, thin-skinned tomatoes perfect for salads...</p>
+                        <a href="#" class="text-green-600 font-medium">View Growing Guide →</a>
+                    </div>
+                </div>
+
+                <!-- Sample Plant Card 2 -->
+                <div class="feature-card">
+                    <div class="card-image-container">
+                        <img src="assets/images/plants/basil download.jpg" alt="Basil" class="card-image">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">Basil</h3>
+                            <span class="plant-badge badge-herb">Herb</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span><i class="fas fa-sun mr-1"></i> Partial shade</span>
+                            <span><i class="fas fa-tint mr-1"></i> Regular</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Fragrant herb essential for many cuisines...</p>
+                        <a href="#" class="text-green-600 font-medium">View Growing Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ... rest of your HTML remains the same ... -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-green-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>© 2023 Garden Maalee. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#" class="hover:text-green-300">Terms</a>
+                <a href="#" class="hover:text-green-300">Privacy</a>
+                <a href="#" class="hover:text-green-300">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

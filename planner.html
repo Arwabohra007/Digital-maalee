@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Planner | Garden Maalee</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-green-50">
+    <!-- Demo Mode Banner -->
+    <div id="demo-banner" class="demo-banner bg-yellow-500 text-white text-center py-1 px-4 hidden">
+        <i class="fas fa-info-circle mr-2"></i> You're in demo mode - <a href="auth/register.html"
+            class="underline font-semibold">Register</a> to save your garden
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="logo-text text-xl font-bold">
+                    Garden <span class="text-green-600 relative">
+                        Maalee
+                        <span
+                            class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="planner.html" class="text-green-600 font-semibold hover:text-green-700">
+                    <i class="fas fa-seedling mr-1"></i> My Garden
+                </a>
+                <a href="plant-database.html" class="hover:text-green-600">
+                    <i class="fas fa-book mr-1"></i> Plant Library
+                </a>
+                <a href="complete-guide.html" class="hover:text-green-600">
+                    <i class="fas fa-book-open mr-1"></i> Guide
+                </a>
+                <a href="#" id="logout-btn" class="text-red-600 hover:text-red-700">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4 shadow-md">
+            <a href="planner.html" class="block py-2 text-green-600 font-semibold">
+                <i class="fas fa-seedling mr-2"></i> My Garden
+            </a>
+            <a href="plant-database.html" class="block py-2 hover:text-green-600">
+                <i class="fas fa-book mr-2"></i> Plant Library
+            </a>
+            <a href="complete-guide.html" class="block py-2 hover:text-green-600">
+                <i class="fas fa-book-open mr-2"></i> Guide
+            </a>            
+            <a href="#" id="mobile-logout-btn" class="block py-2 text-red-600 hover:text-red-700">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Planner Content -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+            <div class="flex flex-col md:flex-row">
+                <!-- Toolbar -->
+                <div class="w-full md:w-1/4 bg-green-100 p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-green-800">Plants</h3>
+                        <a href="plant-database.html" class="text-sm text-green-600 hover:underline">
+                            <i class="fas fa-plus mr-1"></i> Add More
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-1 gap-3" id="plant-toolbar">
+                        <!-- Plants will be loaded here from JavaScript -->
+                        <div class="text-center py-4">
+                            <i class="fas fa-spinner fa-spin text-green-600"></i>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold text-lg mt-6 mb-4 text-green-800">Tools</h3>
+                    <div class="space-y-2">
+                        <button id="grid-size-btn"
+                            class="w-full bg-white p-2 rounded border border-green-300 hover:bg-green-200 text-left">
+                            <i class="fas fa-border-all mr-2"></i> Grid Size
+                        </button>
+                        <button id="save-btn"
+                            class="w-full bg-white p-2 rounded border border-green-300 hover:bg-green-200 text-left">
+                            <i class="fas fa-save mr-2"></i> Save Garden
+                        </button>
+                        <button id="clear-btn"
+                            class="w-full bg-white p-2 rounded border border-green-300 hover:bg-green-200 text-left">
+                            <i class="fas fa-trash mr-2"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Garden Grid -->
+                <div class="w-full md:w-3/4 p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg">My Garden Layout</h3>
+                        <div class="flex space-x-2">
+                            <select id="season-select" class="border rounded p-1 text-sm">
+                                <option value="spring">Spring</option>
+                                <option value="summer">Summer</option>
+                                <option value="fall">Fall</option>
+                                <option value="winter">Winter</option>
+                            </select>
+                            <input type="text" id="garden-name" placeholder="Garden Name"
+                                class="border rounded p-1 text-sm w-32">
+                        </div>
+                    </div>
+
+                    <div id="garden-grid-container" class="overflow-auto border border-green-200 rounded-lg">
+                        <div id="garden-grid" class="grid grid-cols-10 gap-1 bg-green-50 p-2 min-h-[500px]">
+                            <!-- Grid cells will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Plant Info Modal -->
+    <div id="plant-info-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b p-4">
+                <h3 id="modal-plant-name" class="text-xl font-bold">Plant Name</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="flex flex-col items-center mb-4">
+                    <img id="modal-plant-image" src="" alt="Plant" class="w-32 h-32 object-contain mb-3">
+                    <div class="text-center">
+                        <p id="modal-plant-sun" class="text-sm text-gray-600"><i class="fas fa-sun mr-1"></i> <span
+                                class="font-semibold">Sun:</span> Full Sun</p>
+                        <p id="modal-plant-water" class="text-sm text-gray-600"><i class="fas fa-tint mr-1"></i> <span
+                                class="font-semibold">Water:</span> Moderate</p>
+                    </div>
+                </div>
+                <div class="border-t pt-4">
+                    <h4 class="font-bold mb-2">Companion Plants</h4>
+                    <p id="modal-plant-companions" class="text-sm text-gray-700 mb-4">Tomatoes, Basil, Marigolds</p>
+
+                    <h4 class="font-bold mb-2">Spacing Requirements</h4>
+                    <p id="modal-plant-spacing" class="text-sm text-gray-700">12-18 inches between plants</p>
+                </div>
+            </div>
+            <div class="border-t p-4 flex justify-end">
+                <button id="remove-plant" class="text-red-600 hover:text-red-800 mr-3">
+                    <i class="fas fa-trash mr-1"></i> Remove
+                </button>
+                <button id="close-modal-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="script.js"></script>
+    <script type="module">
+            import { auth } from '../auth/auth.js';
+        import { gardenStorage } from './storage.js';
+
+        // Auth check
+        if (!auth.isAuthenticated()) {
+            window.location.href = '../auth/login.html';
+        }
+
+        // Load saved garden
+        const savedGarden = gardenStorage.load();
+        if (savedGarden) {
+            renderGarden(savedGarden);
+        }
+
+        // Save button
+        document.getElementById('save-btn').addEventListener('click', () => {
+            gardenStorage.save(getCurrentGardenData());
+            alert('Garden saved!');
+        });
+        // Auth and Demo Mode
+        const isDemo = window.location.search.includes('demo=true');
+        if (isDemo) {
+            document.getElementById('demo-banner').classList.remove('hidden');
+            document.getElementById('save-btn').disabled = true;
+            document.getElementById('save-btn').classList.add('opacity-50', 'cursor-not-allowed');
+        }
+
+        // Logout functionality
+        function logout() {
+            localStorage.removeItem('gardenMaaleeAuth');
+            window.location.href = 'index.html';
+        }
+        document.getElementById('logout-btn').addEventListener('click', logout);
+        document.getElementById('mobile-logout-btn').addEventListener('click', logout);
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Load plants from localStorage or default data
+        function loadPlants() {
+            const toolbar = document.getElementById('plant-toolbar');
+            toolbar.innerHTML = '';
+
+            // Check for plant selected from database
+            const selectedPlant = JSON.parse(localStorage.getItem('selectedPlant'));
+            const userPlants = JSON.parse(localStorage.getItem('userPlants')) || [];
+
+            if (selectedPlant && !userPlants.some(p => p.id === selectedPlant.id)) {
+                userPlants.push(selectedPlant);
+                localStorage.setItem('userPlants', JSON.stringify(userPlants));
+                localStorage.removeItem('selectedPlant');
+            }
+
+            // Load plants (replace with your actual plant loading logic)
+            const plantsToShow = userPlants.length ? userPlants : [
+                {
+                    id: 1,
+                    name: "Tomato",
+                    image: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f345.svg",
+                    spacing: "24-36 inches"
+                },
+                {
+                    id: 2,
+                    name: "Basil",
+                    image: "assets/images/plants/basil.png",
+                    spacing: "12-18 inches"
+                }
+            ];
+
+            plantsToShow.forEach(plant => {
+                const plantItem = document.createElement('div');
+                plantItem.className = 'plant-item bg-white p-2 rounded border border-green-300 hover:shadow-md flex flex-col items-center cursor-grab';
+                plantItem.dataset.plantId = plant.id;
+                plantItem.draggable = true;
+
+                plantItem.innerHTML = `
+                    <img src="${plant.image}" alt="${plant.name}" class="w-12 h-12 object-contain mb-1">
+                    <span class="text-sm text-center">${plant.name}</span>
+                `;
+
+                // Add drag events
+                plantItem.addEventListener('dragstart', function (e) {
+                    e.dataTransfer.setData('text/plain', plant.id);
+                    this.classList.add('opacity-50', 'border-2', 'border-green-500');
+                });
+
+                plantItem.addEventListener('dragend', function () {
+                    this.classList.remove('opacity-50', 'border-2', 'border-green-500');
+                });
+
+                toolbar.appendChild(plantItem);
+            });
+        }
+
+        // Initialize garden grid
+        function initGardenGrid() {
+            const gardenGrid = document.getElementById('garden-grid');
+            gardenGrid.innerHTML = '';
+
+            const gridSize = 10; // 10x10 grid
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'grid-cell bg-green-50 border border-green-200 hover:bg-green-100';
+                cell.dataset.index = i;
+
+                // Add drop events
+                cell.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                    this.classList.add('bg-green-200');
+                });
+
+                cell.addEventListener('dragleave', function () {
+                    this.classList.remove('bg-green-200');
+                });
+
+                cell.addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    this.classList.remove('bg-green-200');
+
+                    const plantId = e.dataTransfer.getData('text/plain');
+                    const plant = [...JSON.parse(localStorage.getItem('userPlants') || '[]'),
+                    ...JSON.parse(localStorage.getItem('selectedPlant') || '[]')]
+                        .find(p => p.id == plantId);
+
+                    if (plant) {
+                        // Clear existing plant in this cell
+                        this.innerHTML = '';
+
+                        const plantElement = document.createElement('div');
+                        plantElement.className = 'plant-in-garden absolute inset-1 flex items-center justify-center';
+                        plantElement.dataset.plantId = plant.id;
+
+                        const plantImg = document.createElement('img');
+                        plantImg.src = plant.image;
+                        plantImg.alt = plant.name;
+                        plantImg.className = 'max-h-full max-w-full';
+
+                        plantElement.appendChild(plantImg);
+                        this.appendChild(plantElement);
+
+                        // Add click event for plant info
+                        plantElement.addEventListener('click', function (e) {
+                            e.stopPropagation();
+                            showPlantInfo(plant);
+                        });
+                    }
+                });
+
+                cell.addEventListener('click', function () {
+                    if (!this.hasChildNodes()) return;
+                    this.innerHTML = '';
+                });
+
+                gardenGrid.appendChild(cell);
+            }
+        }
+
+        // Plant info modal
+        function showPlantInfo(plant) {
+            document.getElementById('modal-plant-name').textContent = plant.name;
+            document.getElementById('modal-plant-image').src = plant.image;
+            document.getElementById('modal-plant-sun').textContent = plant.sun || 'Full sun';
+            document.getElementById('modal-plant-water').textContent = plant.water || 'Regular watering';
+            document.getElementById('modal-plant-spacing').textContent = plant.spacing || '12-24 inches';
+            document.getElementById('modal-plant-companions').textContent =
+                plant.companions?.join(', ') || 'Not specified';
+
+            document.getElementById('remove-plant').onclick = function () {
+                const cell = document.querySelector(`.grid-cell [data-plant-id="${plant.id}"]`)?.parentElement;
+                if (cell) cell.innerHTML = '';
+                document.getElementById('plant-info-modal').classList.add('hidden');
+            };
+
+            document.getElementById('close-modal-btn').onclick =
+                document.getElementById('close-modal').onclick = function () {
+                    document.getElementById('plant-info-modal').classList.add('hidden');
+                };
+
+            document.getElementById('plant-info-modal').classList.remove('hidden');
+        }
+
+        // Initialize the planner
+        document.addEventListener('DOMContentLoaded', function () {
+            loadPlants();
+            initGardenGrid();
+
+            // Demo mode setup
+            if (isDemo) {
+                document.querySelectorAll('#save-btn, #clear-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        alert('Please register to save your garden designs!');
+                    });
+                });
+            }
+        });
+        </script>
+            </body>
+
+</html>
